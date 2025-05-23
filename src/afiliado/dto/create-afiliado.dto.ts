@@ -1,5 +1,5 @@
-import { IsEnum, IsOptional } from '@nestjs/class-validator';
-import { IsString, IsBoolean, IsDateString, Matches } from 'class-validator';
+import { IsBoolean, IsDateString, IsEnum, IsOptional, IsString, Matches } from '@nestjs/class-validator';
+
 
 export class CreateAfiliadoDto {
   @IsString()
