@@ -3,14 +3,9 @@ import { AfiliadoService } from './afiliado.service';
 import { CreateAfiliadoDto } from './dto/create-afiliado.dto';
 import { UpdateAfiliadoDto } from './dto/update-afiliado.dto';
 
-@Controller('afiliado')
+@Controller('afiliados')
 export class AfiliadoController {
   constructor(private readonly afiliadoService: AfiliadoService) {}
-
-  @Post()
-  create(@Body() createAfiliadoDto: CreateAfiliadoDto) {
-    return this.afiliadoService.create(createAfiliadoDto);
-  }
 
   @Get()
   findAll() {
@@ -19,16 +14,21 @@ export class AfiliadoController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.afiliadoService.findOne(+id);
+    return this.afiliadoService.findOne(id);
+  }
+
+  @Post()
+  create(@Body() dto: CreateAfiliadoDto) {
+    return this.afiliadoService.create(dto);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAfiliadoDto: UpdateAfiliadoDto) {
-    return this.afiliadoService.update(+id, updateAfiliadoDto);
+  update(@Param('id') id: string, @Body() dto: UpdateAfiliadoDto) {
+    return this.afiliadoService.update(id, dto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.afiliadoService.remove(+id);
+    return this.afiliadoService.remove(id);
   }
 }
